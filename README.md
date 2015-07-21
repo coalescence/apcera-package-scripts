@@ -45,6 +45,8 @@ application (ie, might need git to checkout a repository).
 * subversion-1.8.9
 * zsh-5.0.5
 
+You can learn how to create packages [here](./doc/packages_creation.md)
+
 ### Runtimes
 
 Under the `runtimes` directory are the pacakge configurations for various
