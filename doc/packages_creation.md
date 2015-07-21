@@ -1,7 +1,7 @@
 ## Creating new packages for HCOS clusters
 ___
 **Requirements**: 
-* working HCOS cluster (to be able to test package) [link to docs](www.apcera.com/tutorials)
+* working HCOS cluster (to be able to test package) [setup docs](https://github.com/apcera/orchestrator/wiki/Local-Release-Building-and-Deployment)
 ___
 
    All packages configs are in **apcera/package-scripts** repository.
