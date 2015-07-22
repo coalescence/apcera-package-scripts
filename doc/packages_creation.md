@@ -27,7 +27,8 @@ Find it’s install documentation for **Ubuntu-14 and above**.
   }
 ```
 7. Add sha256 key along with package.conf file name to ?????????????????????
-8. Upload manifest with file in step 7 to _(amazons3.apcera.com)_
+8. continuum-vagrant (vagrant-cluster)$ scripts/cntmp.py -d ../continuum/testing/system/tmp/packages/ sync
+9. Upload manifest with file in step 7 to _(amazons3.apcera.com)_
   
 ##### EXAMPLE _(mysql-5.6.25.conf)_ 
 
