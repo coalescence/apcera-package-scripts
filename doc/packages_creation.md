@@ -6,29 +6,36 @@ ___
 
    All packages configs are in **apcera/package-scripts** repository.
 1. Find a source code of the app you want to make package of and download it. 
-Find it’s install documentation for **Ubuntu-14 and above**.
-2. Generate sha256 key for the file 
-    * (like for ex. -> ```$shasum -a s256 path_to_file/file_name```)
-3. Upload dowloaded file to trusted server _(amazons3.apcera.com)_    
-4. Create a config file `<package_name>.conf` in folder named **packages** in **pacera/package-scripts** repository. Looking at the example `mysql-5.6.25.conf` further in this document, customize your config file for the package you want to create.
-5. Test it in your test cluster and see if it succeeds 
+Find it’s install documentation for **relevant os**.
+2. Its good to verify dowloaded file for provider identity (by ‘gpg') and safe transit (SHA or MD5) 
+Generate sha256 key for the file or md5 key 
+    * (like for ex. -> ```$shasum -a256 path_to_file/file_name```)
+3. Upload dowloaded file to trusted server _(amazons3.apcera.com)_  (may need to also specify its aha key)  
+4. Create a config file `<package_name>.conf` in folder named **packages** in **pacera/package-scripts** repository. Looking at the example `mysql-5.6.25.conf` further in this document, customize your config file for the package you want to create. Do it and then move to the next step.
+5. Build it and test it in your test cluster and see if it succeeds 
     * to build use -> ```$apc package build path_to_conf_file/mysql-5.6.25.conf```
-6. Find **manifest.json** in **continuum/testing/system/tmp/packages/manifest.json** and add your package names you specified in “provides” section in your_package.conf to relevant section in the `manifest.json` in following way: 
-    * For ex. in `mysql-5.6.25.conf` case:
+6. When step 5 succeeds export your package to your local machine in cntmp format 
+    * for ex. -> `$ apc package export /apcera/pkg/packages::mysql`
+7. Download **checksums** file and **manifest.json** from AWS S3 (or ask someone with appropriate permissions to do it for you). 
+Add your package names you specified in “provides” section in your_package.conf to relevant section in the `manifest.json` in following way: 
+    For ex. in `mysql-5.6.25.conf` case:
 ```json
 # manifest.json
     "package”:{
     ….
     mysql:mysql-5.6.25.sntmp
+    mysql:mysql-5.sntmp
     mysql-5.6:mysql-5.6.25.sntmp
     mysql-5.6.25:mysql-5.6.25.sntmp
     ….
     …. 
   }
 ```
-7. Add sha256 key along with package.conf file name to ?????????????????????
-8. continuum-vagrant (vagrant-cluster)$ scripts/cntmp.py -d ../continuum/testing/system/tmp/packages/ sync
-9. Upload manifest with file in step 7 to _(amazons3.apcera.com)_
+8. Generate and add sha256 keys along with filenames to checksums file. (you will need to add manifest sha, yourpackage.cntmp sha, and checksums sha itself)
+9. Create a PR (with your_package.conf file)
+10. After 8 step has been successfully completed upload manifest with checksums file with your_package.sntmp to AWS S3 _(amazons3.apcera.com)_
+11. Add/replace with edited manifest.conf /continuum/testing/system/tmp/packages/manifest.json
+12. run `$continuum-vagrant (vagrant-cluster)$ scripts/cntmp.py -d ../continuum/testing/system/tmp/packages/ sync` and you should see your packages being installed on your cluster (you may need to delete them before you sync, to see sync is actually working)
   
 ##### EXAMPLE _(mysql-5.6.25.conf)_ 
 
