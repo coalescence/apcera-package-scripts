@@ -11,7 +11,7 @@ Find it’s install documentation for **relevant os**.
 Generate sha256 key for the file or md5 key 
     * (like for ex. -> ```$shasum -a256 path_to_file/file_name```)
 3. Upload dowloaded file to trusted server _(amazons3.apcera.com)_  (may need to also specify its aha key)  
-4. Create a config file `<package_name>.conf` in folder named **packages** in **pacera/package-scripts** repository. Looking at the example `mysql-5.6.25.conf` further in this document, customize your config file for the package you want to create. Do it and then move to the next step.
+4. Create a config file `<package_name>.conf` in folder named **packages** in **apcera/package-scripts** repository. Looking at the example `mysql-5.6.25.conf` further in this document, customize your config file for the package you want to create. Do it and then move to the next step.
 5. Build it and test it in your test cluster and see if it succeeds 
     * to build use -> ```$apc package build path_to_conf_file/mysql-5.6.25.conf```
 6. When step 5 succeeds export your package to your local machine in cntmp format 
