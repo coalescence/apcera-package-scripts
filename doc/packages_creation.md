@@ -100,8 +100,7 @@ build (
 
   # Set default passwords for all users, local and network based.
   ./bin/mysqladmin -u root password 'your_db_password'
-  ./bin/mysqladmin -u root -h 127.0.0.1 password 'root'
-  ./bin/mysqladmin -u root -h `ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'` password 'your_db_password'
+  ....
   ./bin/mysql -u root -proot -e "CREATE USER 'root'@'%' IDENTIFIED BY 'root';"
 
   # Stop mysql.
