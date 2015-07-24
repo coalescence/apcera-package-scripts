@@ -149,6 +149,14 @@ detached signatures validated, and the MD5 checksums of the files signed
 matched those given on the unencrypted release page.
 
 
+POSTGRES
+---
+
+Software releases are indexed at <http://www.postgresql.org/ftp/source/>, HTTPS not
+available for the software list, but actual downloads are done with HTTPS. For
+verification they provide both SHA256 and MD5 checksums.
+
+
 Python
 ------
 
