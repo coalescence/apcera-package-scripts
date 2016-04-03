@@ -33,6 +33,7 @@ distributions and versions.
 * Ubuntu 12.04
 * Ubuntu 13.10
 * Ubuntu 14.04
+* Ubuntu 14.04.3
 
 ### Packages
 
@@ -43,7 +44,8 @@ application (ie, might need git to checkout a repository).
 
 * apache-2.2.29
 * apache-ant-1.9.4
-* apache-tomcat-7.0.55
+* apache-tomcat-7.0.62
+* apache-tomcat-8.0.30
 * apc-0.16.0
 * bzr-2.6.0
 * git-2.3.1
@@ -76,11 +78,13 @@ runtimes that can be pulled into the Apcera Platform.
 * go-1.3
 * go-1.4
 * go-1.5.1
+* java-7
 * java-8
 * meteor-1.2.0.1
 * node-0.6.21
 * node-0.8.28
 * node-0.10.40
+* node-0.12.9
 * node-4.2.1
 * ocaml-4.01.0
 * openjdk-1.6
@@ -92,6 +96,8 @@ runtimes that can be pulled into the Apcera Platform.
 * php-5.4.31-apc1
 * php-apache-5.5.15-apc1
 * php-fpm-nginx-5.5.15-apc1
+* php-apache-5.6.16
+* php-fpm-nginx-5.6.16
 * python-2.7.9
 * python-3.3.6
 * python-3.4.3
