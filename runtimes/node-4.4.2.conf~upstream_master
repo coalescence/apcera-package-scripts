@@ -1,0 +1,38 @@
+name:      "node-4.4.2"
+namespace: "/apcera/pkg/runtimes"
+
+sources [
+  { url: "https://s3.amazonaws.com/apcera-sources/node/node-v4.4.2.tar.gz",
+    sha256: "ae91cb0a31f87b5b13bb2665178845d99abf1037dc3636fa88f442b4a4c65297" },
+]
+
+build_depends [ { package: "build-essential" } ]
+depends       [ { os: "ubuntu" } ]
+provides      [ { runtime: "node" },
+                { runtime: "node-4.4" },
+                { runtime: "node-4.4.2" } ]
+
+environment { "PATH": "/opt/apcera/node-4.4.2/bin:$PATH" }
+
+cleanup [ "/usr/lib/python2.7" ] # this will come from it using python
+                                 # it will generate *.pyc files
+
+build (
+      export INSTALLPATH=/opt/apcera/node-4.4.2
+
+      sudo ln -f /usr/bin/python2.7 /usr/bin/python
+
+      tar xzvf node-v4.4.2.tar.gz
+      (
+        cd node-v4.4.2
+        ./configure --prefix=${INSTALLPATH}
+        sudo make install
+      )
+
+      sudo mkdir -p ${INSTALLPATH}/etc
+      echo 'cache = /app/.npm' > npmrc
+      sudo chown root:root npmrc
+      sudo mv npmrc ${INSTALLPATH}/etc/npmrc
+
+      sudo rm -f /usr/bin/python
+)
