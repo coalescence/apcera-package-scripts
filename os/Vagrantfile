@@ -1,0 +1,50 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# coding: UTF-8
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "centos-7"
+  config.vm.box_url = "https://s3.amazonaws.com/apcera-sources/centos/centos-7.box"
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 8192
+    v.cpus = 4
+  end
+
+  config.ssh.insert_key = false
+
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "Install yum deps"
+    yum install -y libguestfs-tools-c
+    yum install -y lorax
+    yum install -y virt-install
+
+    echo "Starting virtualization daemon"
+    systemctl enable libvirtd.service
+    systemctl start libvirtd.service
+    systemctl status libvirtd.service
+
+    cd /root || exit 1
+    cp /vagrant/defaultnet.xml /root
+    cp /vagrant/centos-7.ks /root
+
+    # qemu user needs to be able to read files in /root.
+    usermod -aG root qemu
+
+    # CentOS targz will be placed here. Make sure it exists.
+    mkdir -p /var/tmp
+
+    virsh net-define defaultnet.xml
+    virsh net-autostart default
+    virsh net-start default
+
+    echo "Downloading CentOS bootstrap ISO"
+    curl --silent --remote-name https://s3.amazonaws.com/apcera-sources/centos/centos-7-boot.iso
+
+    echo "Creating CentOS targz"
+    echo "This might take about 1 hour"
+    livemedia-creator --iso centos-7-boot.iso --ks centos-7.ks --make-tar --compression gzip --image-name centos-7.tar.gz
+    cp /var/tmp/centos-7.tar.gz /vagrant
+    echo "Done! Check the current dir for 'centos-7.tar.gz'!"
+  SHELL
+end

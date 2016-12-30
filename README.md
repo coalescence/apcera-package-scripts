@@ -53,7 +53,7 @@ application (ie, might need git to checkout a repository).
 * git-2.3.1
 * git-2.8.0
 * gnatsd-0.7.2
-* imagemagick-6.8.9-6-apc2
+* imagemagick-6.9.6-5
 * iperf-2.0.5
 * ltp-2016.05.10
 * maven-3.2.2

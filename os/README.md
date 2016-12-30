@@ -11,9 +11,6 @@ development headers for the libraries available in the base.
 
 ## Versions
 
-* Busybox (using Buildroot 2013.08.1)
-* Ubuntu 12.04
-* Ubuntu 13.10
 * Ubuntu 14.04 (built using 13.10 instead of Buildroot)
 
 ## Buildroot / Busybox
@@ -29,6 +26,8 @@ apc package from file rootfs.tar.gz "Buildroot Linux" --provides="os=buildroot" 
 ```
 
 ## Common Libraries
+
+These are some of the libraries that we expect to be installed in an OS.
 
 Files:
 

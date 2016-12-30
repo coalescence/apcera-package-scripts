@@ -1,8 +1,0 @@
-*.cntmp
-*.bundle
-.DS_Store
-
-# Ignore downloads
-os/*.tar.gz
-packages/*.tar.gz
-runtimes/*.tar.gz
