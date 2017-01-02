@@ -48,4 +48,4 @@ apc package build wlp-webprofile7-16.0.0.2.conf
 The following are items that should be updated to match your specific environment or deployment needs:
 
 - namespace. This should be updated to match the desired target namespace for the package.
-- Java runtime "depends". The script references `java-8` as the package "provide". This should be updated if your Java JDK is different.
+- Java runtime "depends". The script references `java-1.8` as the package "provide". This should be updated if your Java JDK is different.

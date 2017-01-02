@@ -106,8 +106,8 @@ runtimes that can be pulled into the Apcera Platform.
 * go-1.6.2
 * go-1.6.3
 * go-1.6
-* java-7
-* java-8
+* java-1.7
+* java-1.8
 * meteor-1.2.0.1
 * node-0.10.40
 * node-0.12.9
