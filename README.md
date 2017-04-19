@@ -48,6 +48,7 @@ application (ie, might need git to checkout a repository).
 * apache-tomcat-8.0.30
 * apache-tomcat-8.0.33
 * apc-0.16.0
+* bonnie-1.97.3
 * bzr-2.6.0
 * chown-chgrp-chmod-0.0.1
 * git-2.3.1
