@@ -10,11 +10,11 @@ folder=( $2 )  # runtimes or packages
 
 for ((i=0;i<${#array[@]};++i)); do
     printf "Building %s in %s folder.\n" "${array[i]}" "${folder[i]}"
-    apc package delete package::/apcera/pkg/${folder[i]}::${array[i]} --batch
+    pkg_namespace=$(grep "namespace:" ${folder[i]}/${array[i]}.conf | cut -d\" -f 2)
+    echo "Namespace is ${pkg_namespace}."
+    apc package delete package::$pkg_namespace::${array[i]} --batch
     apc package build ${folder[i]}/${array[i]}.conf --batch
-    apc package export /apcera/pkg/${folder[i]}::${array[i]}
+    printf "Exporting package to current working directory"
+    apc package export $pkg_namespace::${array[i]}
+    printf ""
 done
-
-
-
-
