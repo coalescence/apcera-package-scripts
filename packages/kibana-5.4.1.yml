@@ -1,0 +1,12 @@
+---
+
+server.name: kibana-{{env_map.CNTM_INSTANCE_UUID}}
+server.host: "0.0.0.0"
+elasticsearch.url: http://elasticsearch.apcera.local:9200
+
+# TODO: Add support for elasticsearch security via xpack
+#elasticsearch.username: elastic
+#elasticsearch.password: changeme
+
+# TODO: Add xpack support
+#xpack.monitoring.ui.container.elasticsearch.enabled: true
