@@ -71,5 +71,7 @@ echo "LOG_DIRS                    = ${LOG_DIRS}"
 echo "JMX_PORT                    = ${JMX_PORT}"
 echo "KAFKA_JMX_OPTS              = ${KAFKA_JMX_OPTS}"
 
-$KAFKA_HOME/custom_scripts/create-topics.sh &
-exec $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
+# TODO: Add support for automatically creating topics
+#$KAFKA_HOME/custom_scripts/create-topics.sh &
+
+$KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
