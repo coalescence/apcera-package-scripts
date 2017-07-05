@@ -1,0 +1,10 @@
+# General settings
+http.host: "0.0.0.0"
+node.name: ls-{{env_map.CNTM_INSTANCE_UUID}}
+path.config: {{env_map.LOGSTASH_HOME}}/pipeline
+
+# TODO: Add xpack support
+#xpack.monitoring.enabled: {{env_map.LS_XPACK_ENABLED}}
+#xpack.monitoring.elasticsearch.url: http://elasticsearch.apcera.local:9200
+#xpack.monitoring.elasticsearch.username: logstash_system
+#xpack.monitoring.elasticsearch.password: changeme
