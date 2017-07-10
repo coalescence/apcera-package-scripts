@@ -81,13 +81,9 @@ else
 fi
 
 
-# Configuring the Artifactory Access Client
-#echo 'artifactory.access.client.serverUrl.override=http://127.0.0.1:8081/access' >> $ARTIFACTORY_HOME/etc/artifactory.system.properties
-#echo 'artifactory.access.server.bundled=true' >> $ARTIFACTORY_HOME/etc/artifactory.system.properties
-
-
 # Start Artifactory and tail key log files
 $ARTIFACTORY_HOME/bin/artifactoryctl start \
   && echo 'Starting JFrog Artifactory...' \
-  && sleep 10 && echo 'Tailing logs...' \
+  && sleep 10 \
+  && echo 'Tailing logs...' \
   && tail -f -n 500 $ARTIFACTORY_HOME/logs/*.*
